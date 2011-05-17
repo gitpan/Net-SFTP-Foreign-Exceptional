@@ -31,10 +31,10 @@ my %WriteMakefileArgs = (
     'Modern::Perl' => '0',
     'Moose' => '0',
     'MooseX::NonMoose' => '0',
-    'Net::SFTP::Foreign' => '0',
+    'Net::SFTP::Foreign' => '1.64',
     'utf8' => '0'
   },
-  'VERSION' => '0.001',
+  'VERSION' => '0.002',
   'test' => {
     'TESTS' => 't/*.t'
   }

@@ -23,10 +23,11 @@ requires:
   Modern::Perl: 0
   Moose: 0
   MooseX::NonMoose: 0
-  Net::SFTP::Foreign: 0
+  Net::SFTP::Foreign: 1.64
   perl: 5.010
   utf8: 0
 resources:
   bugtracker: https://github.com/mjgardner/net-sftp-foreign-exceptional/issues
+  homepage: http://search.cpan.org/dist/Net-SFTP-Foreign-Exceptional/
   repository: git://github.com/mjgardner/net-sftp-foreign-exceptional.git
-version: 0.001
+version: 0.002

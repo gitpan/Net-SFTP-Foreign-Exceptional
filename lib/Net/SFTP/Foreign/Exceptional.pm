@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package Net::SFTP::Foreign::Exceptional;
 
 BEGIN {
-    $Net::SFTP::Foreign::Exceptional::VERSION = '0.001';
+    $Net::SFTP::Foreign::Exceptional::VERSION = '0.002';
 }
 
 # ABSTRACT: wraps Net::SFTP::Foreign to throw exceptions on failure
@@ -21,7 +21,7 @@ use Carp;
 use English '-no_match_vars';
 use Moose;
 use MooseX::NonMoose;
-extends 'Net::SFTP::Foreign';
+extends 'Net::SFTP::Foreign' => { -version => 1.64 };
 
 sub BUILD {
     my ( $self, $args_ref ) = @ARG;
@@ -68,7 +68,7 @@ Net::SFTP::Foreign::Exceptional - wraps Net::SFTP::Foreign to throw exceptions o
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
