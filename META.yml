@@ -7,7 +7,6 @@ build_requires:
   File::Temp: 0
   Scalar::Util: 0
   Test::More: 0.94
-  perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -21,15 +20,13 @@ requires:
   Carp: 0
   Class::Inspector: 0
   English: 0
-  Modern::Perl: 0
   Moose: 0
-  MooseX::Has::Sugar: 0
   Net::SFTP::Foreign: 1.65
   Readonly: 0
-  perl: 5.010
+  perl: 5.008
   utf8: 0
 resources:
   bugtracker: https://github.com/mjgardner/net-sftp-foreign-exceptional/issues
   homepage: http://search.cpan.org/dist/Net-SFTP-Foreign-Exceptional/
   repository: git://github.com/mjgardner/net-sftp-foreign-exceptional.git
-version: 0.003
+version: 0.004
