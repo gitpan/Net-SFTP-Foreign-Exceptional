@@ -15,6 +15,8 @@ my %WriteMakefileArgs = (
     'File::Find' => '0',
     'File::Temp' => '0',
     'Scalar::Util' => '0',
+    'Test::Deep' => '0',
+    'Test::Moose' => '0',
     'Test::More' => '0.94'
   },
   'CONFIGURE_REQUIRES' => {
@@ -26,14 +28,12 @@ my %WriteMakefileArgs = (
   'NAME' => 'Net::SFTP::Foreign::Exceptional',
   'PREREQ_PM' => {
     'Carp' => '0',
-    'Class::Inspector' => '0',
     'English' => '0',
     'Moose' => '0',
     'Net::SFTP::Foreign' => '1.65',
-    'Readonly' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '0.004',
+  'VERSION' => '0.005',
   'test' => {
     'TESTS' => 't/*.t'
   }

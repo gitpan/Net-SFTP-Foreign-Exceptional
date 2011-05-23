@@ -14,7 +14,7 @@ use utf8;
 package Net::SFTP::Foreign::Exceptional;
 
 BEGIN {
-    $Net::SFTP::Foreign::Exceptional::VERSION = '0.004';
+    $Net::SFTP::Foreign::Exceptional::VERSION = '0.005';
 }
 
 # ABSTRACT: wraps Net::SFTP::Foreign to throw exceptions on failure
@@ -22,16 +22,15 @@ BEGIN {
 use Carp;
 use English '-no_match_vars';
 use Moose;
-use Class::Inspector;
 use Net::SFTP::Foreign 1.65;
-use Readonly;
 
 our @CARP_NOT = qw(Net::SFTP::Foreign Class::MOP::Method::Wrapped);
-Readonly my $WRAPPED => 'Net::SFTP::Foreign';
-Readonly my @METHODS => grep { $ARG ne 'new' and $ARG ne 'DESTROY' }
-    @{ Class::Inspector->methods( $WRAPPED, 'public' ) };
+my @METHODS = grep { $ARG ne 'new' and $ARG ne 'DESTROY' }
+    map { $ARG->name }
+    Moose::Meta::Class->initialize('Net::SFTP::Foreign')->get_all_methods();
 
-has _sftp => ( is => 'ro', isa => $WRAPPED, handles => \@METHODS );
+has _sftp =>
+    ( is => 'ro', isa => 'Net::SFTP::Foreign', handles => \@METHODS );
 after \@METHODS => sub { shift->_sftp->die_on_error() };
 
 around BUILDARGS => sub {
@@ -44,6 +43,8 @@ around BUILDARGS => sub {
 __PACKAGE__->meta->make_immutable();
 1;
 
+__END__
+
 =pod
 
 =for :stopwords Mark Gardner GSI Commerce cpan testmatrix url annocpan anno bugtracker rt
@@ -55,7 +56,7 @@ Net::SFTP::Foreign::Exceptional - wraps Net::SFTP::Foreign to throw exceptions o
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
@@ -172,5 +173,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-__END__
