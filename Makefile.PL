@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-BEGIN { require 5.008; }
+use 5.008;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -16,7 +16,6 @@ my %WriteMakefileArgs = (
     'File::Temp' => '0',
     'Scalar::Util' => '0',
     'Test::Deep' => '0',
-    'Test::Moose' => '0',
     'Test::More' => '0.94'
   },
   'CONFIGURE_REQUIRES' => {
@@ -27,13 +26,13 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'Net::SFTP::Foreign::Exceptional',
   'PREREQ_PM' => {
+    'Any::Moose' => '0',
     'Carp' => '0',
     'English' => '0',
-    'Moose' => '0',
     'Net::SFTP::Foreign' => '1.65',
     'utf8' => '0'
   },
-  'VERSION' => '0.005',
+  'VERSION' => '0.010',
   'test' => {
     'TESTS' => 't/*.t'
   }

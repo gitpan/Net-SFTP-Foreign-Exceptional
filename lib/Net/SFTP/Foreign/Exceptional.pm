@@ -1,33 +1,22 @@
-#
-# This file is part of Net-SFTP-Foreign-Exceptional
-#
-# This software is copyright (c) 2011 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
+package Net::SFTP::Foreign::Exceptional;
+
 use 5.008;
 use strict;
 use warnings;
 use utf8;
 
-package Net::SFTP::Foreign::Exceptional;
-
-BEGIN {
-    $Net::SFTP::Foreign::Exceptional::VERSION = '0.005';
-}
-
-# ABSTRACT: wraps Net::SFTP::Foreign to throw exceptions on failure
-
+our $VERSION = '0.010';    # VERSION
 use Carp;
 use English '-no_match_vars';
-use Moose;
+use Any::Moose;
 use Net::SFTP::Foreign 1.65;
 
-our @CARP_NOT = qw(Net::SFTP::Foreign Class::MOP::Method::Wrapped);
+our @CARP_NOT
+    = qw(Net::SFTP::Foreign Class::MOP::Method::Wrapped Mouse::Meta::Class);
 my @METHODS = grep { $ARG ne 'new' and $ARG ne 'DESTROY' }
     map { $ARG->name }
-    Moose::Meta::Class->initialize('Net::SFTP::Foreign')->get_all_methods();
+    any_moose('::Meta::Class')->initialize('Net::SFTP::Foreign')
+    ->get_all_methods();
 
 has _sftp =>
     ( is => 'ro', isa => 'Net::SFTP::Foreign', handles => \@METHODS );
@@ -43,6 +32,8 @@ around BUILDARGS => sub {
 __PACKAGE__->meta->make_immutable();
 1;
 
+# ABSTRACT: wraps Net::SFTP::Foreign to throw exceptions on failure
+
 __END__
 
 =pod
@@ -56,7 +47,7 @@ Net::SFTP::Foreign::Exceptional - wraps Net::SFTP::Foreign to throw exceptions o
 
 =head1 VERSION
 
-version 0.005
+version 0.010
 
 =head1 SYNOPSIS
 
