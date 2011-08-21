@@ -1,5 +1,5 @@
 ---
-abstract: 'wraps Net::SFTP::Foreign to throw exceptions on failure'
+abstract: 'DEPRECATED. Wraps Net::SFTP::Foreign to throw exceptions on failure.'
 author:
   - 'Mark Gardner <mjgardner@cpan.org>'
 build_requires:
@@ -8,10 +8,11 @@ build_requires:
   Scalar::Util: 0
   Test::Deep: 0
   Test::More: 0.94
+  Test::Most: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200015, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Dist::Zilla version 4.300000, CPAN::Meta::Converter version 2.112150'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -21,11 +22,14 @@ requires:
   Any::Moose: 0
   Carp: 0
   English: 0
-  Net::SFTP::Foreign: 1.65
+  Net::SFTP::Foreign: 1.67
+  Package::DeprecationManager: 0
   perl: 5.008
+  strict: 0
   utf8: 0
+  warnings: 0
 resources:
   bugtracker: https://github.com/mjgardner/net-sftp-foreign-exceptional/issues
-  homepage: http://search.cpan.org/dist/Net-SFTP-Foreign-Exceptional/
+  homepage: http://metacpan.org/release/Net-SFTP-Foreign-Exceptional/
   repository: git://github.com/mjgardner/net-sftp-foreign-exceptional.git
-version: 0.010
+version: 0.011
